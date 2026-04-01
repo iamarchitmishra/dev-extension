@@ -42,6 +42,15 @@ query userProfileCalendar($username: String!, $year: Int) {
 }
 """
 
+TOTAL_QUERY = """
+query {
+  allQuestionsCount {
+    difficulty
+    count
+  }
+}
+"""
+
 _cache = {"data": None, "ts": 0}
 
 
@@ -59,6 +68,9 @@ def fetch_data():
     stats_resp = graphql(STATS_QUERY, {"username": USERNAME})
     stats = stats_resp["data"]["matchedUser"]["submitStatsGlobal"]["acSubmissionNum"]
 
+    totals_resp = graphql(TOTAL_QUERY, {})
+    totals = totals_resp["data"]["allQuestionsCount"]
+
     merged_calendar = {}
     streak = 0
     total_active_days = 0
@@ -73,6 +85,7 @@ def fetch_data():
 
     return {
         "stats": stats,
+        "totals": totals,
         "calendar": merged_calendar,
         "streak": streak,
         "totalActiveDays": total_active_days,

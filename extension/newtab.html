@@ -18,55 +18,53 @@
     <div id="error" class="error hidden"></div>
 
     <div id="content" class="hidden">
-      <div class="stats-row">
-        <div class="stat-block">
-          <div class="stat-value" id="total">—</div>
-          <div class="stat-label">solved</div>
+
+      <!-- Gauge + difficulty boxes -->
+      <div class="gauge-section">
+        <div class="gauge-wrap">
+          <svg id="gauge-svg" viewBox="0 0 200 200" width="200" height="200"></svg>
+          <div class="gauge-center">
+            <div class="gauge-number">
+              <span id="gauge-solved">—</span><span class="gauge-slash">/</span><span id="gauge-total" class="gauge-total-num">—</span>
+            </div>
+            <div class="gauge-sublabel">&#10003; Solved</div>
+          </div>
         </div>
-        <div class="stat-block">
-          <div class="stat-value easy" id="easy">—</div>
-          <div class="stat-label">easy</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-value medium" id="medium">—</div>
-          <div class="stat-label">medium</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-value hard" id="hard">—</div>
-          <div class="stat-label">hard</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-value" id="streak">—</div>
-          <div class="stat-label">day streak</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-value" id="active">—</div>
-          <div class="stat-label">active days</div>
+
+        <div class="diff-boxes">
+          <div class="diff-box">
+            <span class="diff-name easy">Easy</span>
+            <span class="diff-count" id="easy-count">—</span>
+          </div>
+          <div class="diff-box">
+            <span class="diff-name medium">Med.</span>
+            <span class="diff-count" id="medium-count">—</span>
+          </div>
+          <div class="diff-box">
+            <span class="diff-name hard">Hard</span>
+            <span class="diff-count" id="hard-count">—</span>
+          </div>
         </div>
       </div>
 
+      <!-- Heatmap -->
       <div class="heatmap-section">
-        <div class="heatmap-labels">
-          <div class="month-labels" id="month-labels"></div>
+        <div class="heatmap-header">
+          <span id="submission-count">— submissions in the past year</span>
+          <span class="heatmap-meta">Active: <strong id="active">—</strong> &nbsp;·&nbsp; Streak: <strong id="streak">—</strong></span>
         </div>
-        <div class="heatmap-body">
-          <div class="day-labels">
-            <span>Mon</span>
-            <span>Wed</span>
-            <span>Fri</span>
-          </div>
-          <div class="heatmap-grid" id="heatmap"></div>
-        </div>
+        <div class="heatmap-grid" id="heatmap"></div>
         <div class="heatmap-legend">
           <span>less</span>
-          <div class="legend-cell" style="--level:0"></div>
-          <div class="legend-cell" style="--level:1"></div>
-          <div class="legend-cell" style="--level:2"></div>
-          <div class="legend-cell" style="--level:3"></div>
-          <div class="legend-cell" style="--level:4"></div>
+          <div class="legend-cell l0"></div>
+          <div class="legend-cell l1"></div>
+          <div class="legend-cell l2"></div>
+          <div class="legend-cell l3"></div>
+          <div class="legend-cell l4"></div>
           <span>more</span>
         </div>
       </div>
+
     </div>
   </div>
 
