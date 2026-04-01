@@ -1,0 +1,29 @@
+extension/newtab.css
+  acecf86466317b93 18,34,36,40,44,50-52,54-62,65-69,72-78,81-92,95-98,101-103,106-110,113-114,117,120-129,132-134,136-138,140-141,143,146,150,153,155-158,162-163,165-166,168,172,175-176,179,197-202,204,206-210,228-232
+extension/newtab.js
+  acecf86466317b93 3-88,97-98,105-106,108-112,114-145,147,149-151,154-166,170-185,188-189,201-202
+proxy/server.py
+  acecf86466317b93 45-53,71-73,88
+extension/newtab.html
+  acecf86466317b93 21-28,30,33-41,43-45,50,52-54,59-63,67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.7",
+  "base_commit_sha": "2c4935556eda85b5cb459c115ae8b16ff561ce45",
+  "prompts": {
+    "acecf86466317b93": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3ace0a6-8fd5-4526-a0f7-51607c74af01",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Archit Mishra <archit.mishra1@1mg.com>",
+      "messages": [],
+      "total_additions": 374,
+      "total_deletions": 263,
+      "accepted_lines": 324,
+      "overriden_lines": 0
+    }
+  }
+}
