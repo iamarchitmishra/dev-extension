@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "LeetCode Dashboard",
+  "version": "1.0",
+  "description": "Your LeetCode stats on every new tab",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "host_permissions": [
+    "http://localhost:7337/*"
+  ]
+}

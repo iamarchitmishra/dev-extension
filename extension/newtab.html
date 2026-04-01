@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeetCode Dashboard</title>
+  <link rel="stylesheet" href="newtab.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="username">aarchit1999</span>
+      <span class="divider">/</span>
+      <span class="site">leetcode</span>
+    </div>
+
+    <div id="loading" class="loading">fetching stats...</div>
+    <div id="error" class="error hidden"></div>
+
+    <div id="content" class="hidden">
+      <div class="stats-row">
+        <div class="stat-block">
+          <div class="stat-value" id="total">—</div>
+          <div class="stat-label">solved</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value easy" id="easy">—</div>
+          <div class="stat-label">easy</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value medium" id="medium">—</div>
+          <div class="stat-label">medium</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value hard" id="hard">—</div>
+          <div class="stat-label">hard</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value" id="streak">—</div>
+          <div class="stat-label">day streak</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value" id="active">—</div>
+          <div class="stat-label">active days</div>
+        </div>
+      </div>
+
+      <div class="heatmap-section">
+        <div class="heatmap-labels">
+          <div class="month-labels" id="month-labels"></div>
+        </div>
+        <div class="heatmap-body">
+          <div class="day-labels">
+            <span>Mon</span>
+            <span>Wed</span>
+            <span>Fri</span>
+          </div>
+          <div class="heatmap-grid" id="heatmap"></div>
+        </div>
+        <div class="heatmap-legend">
+          <span>less</span>
+          <div class="legend-cell" style="--level:0"></div>
+          <div class="legend-cell" style="--level:1"></div>
+          <div class="legend-cell" style="--level:2"></div>
+          <div class="legend-cell" style="--level:3"></div>
+          <div class="legend-cell" style="--level:4"></div>
+          <span>more</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="newtab.js"></script>
+</body>
+</html>
