@@ -1,0 +1,42 @@
+extension/manifest.json
+  acecf86466317b93 9-12,14
+CLAUDE.md
+  faa08e6d207fbc0b 16,18-19,21,25,27,29-31,34-39,54-56,58-60,85,89-91,93,95,99-100,104
+extension/background.js
+  acecf86466317b93 1-84
+extension/newtab.js
+  acecf86466317b93 187-215,223-235,237,241-242
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.7",
+  "base_commit_sha": "8d71ef4c9f9b57ccaaea19470a5f7a0159a6bdb0",
+  "prompts": {
+    "acecf86466317b93": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3ace0a6-8fd5-4526-a0f7-51607c74af01",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Archit Mishra <archit.mishra1@1mg.com>",
+      "messages": [],
+      "total_additions": 225,
+      "total_deletions": 106,
+      "accepted_lines": 134,
+      "overriden_lines": 0
+    },
+    "faa08e6d207fbc0b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "da5e9190-11ab-4665-b81b-a2fcd0136781",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Archit Mishra <archit.mishra1@1mg.com>",
+      "messages": [],
+      "total_additions": 31,
+      "total_deletions": 14,
+      "accepted_lines": 31,
+      "overriden_lines": 0
+    }
+  }
+}
