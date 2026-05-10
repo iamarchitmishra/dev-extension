@@ -1,4 +1,3 @@
-const PROXY_URL = "http://localhost:7337/data";
 
 // ── Gauge ────────────────────────────────────────────────────────────────────
 
@@ -185,34 +184,66 @@ function buildHeatmap(calendarData) {
   }
 }
 
+// ── Stats computed from calendar data ────────────────────────────────────────
+
+function computeStreak(calendarData) {
+  const now = new Date();
+  let d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+
+  // If today has no submission yet, start from yesterday (streak still alive)
+  const todayTs = String(d.getTime() / 1000);
+  if (!calendarData[todayTs]) {
+    d.setUTCDate(d.getUTCDate() - 1);
+  }
+
+  let streak = 0;
+  while (true) {
+    const ts = String(d.getTime() / 1000);
+    if (calendarData[ts] > 0) {
+      streak++;
+      d.setUTCDate(d.getUTCDate() - 1);
+    } else {
+      break;
+    }
+  }
+  return streak;
+}
+
+function computeActiveDays(calendarData) {
+  return Object.values(calendarData).filter((v) => v > 0).length;
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 
-async function loadData() {
+function loadData() {
   const loading = document.getElementById("loading");
   const content = document.getElementById("content");
   const errorEl = document.getElementById("error");
 
-  try {
-    const resp = await fetch(PROXY_URL);
-    if (!resp.ok) throw new Error(`Proxy returned ${resp.status}`);
-    const data = await resp.json();
-    if (data.error) throw new Error(data.error);
+  chrome.runtime.sendMessage({ type: "GET_DATA" }, (response) => {
+    if (chrome.runtime.lastError || !response) {
+      loading.classList.add("hidden");
+      errorEl.textContent = `Error: ${chrome.runtime.lastError?.message ?? "No response from background"}`;
+      errorEl.classList.remove("hidden");
+      return;
+    }
+    if (!response.ok) {
+      loading.classList.add("hidden");
+      errorEl.textContent = `Error: ${response.error}`;
+      errorEl.classList.remove("hidden");
+      return;
+    }
 
+    const { data } = response;
     buildGauge(data.stats, data.totals);
     buildHeatmap(data.calendar);
 
-    document.getElementById("streak").textContent = data.streak ?? "—";
-    document.getElementById("active").textContent = data.totalActiveDays ?? "—";
+    document.getElementById("streak").textContent = computeStreak(data.calendar);
+    document.getElementById("active").textContent = computeActiveDays(data.calendar);
 
     loading.classList.add("hidden");
     content.classList.remove("hidden");
-  } catch (err) {
-    loading.classList.add("hidden");
-    errorEl.textContent = err.message.includes("Failed to fetch")
-      ? "Proxy not running. Start it with: python3 proxy/server.py"
-      : `Error: ${err.message}`;
-    errorEl.classList.remove("hidden");
-  }
+  });
 }
 
 loadData();
